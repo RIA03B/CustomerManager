@@ -66,8 +66,19 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 ### Class Diagram Description  
 
-**Main Activity:**  
+**Customer:**  The customers table in the database.  
 
+**Data Access Layer:**  (CustomerRepository) This extends Repository.  
+
+**CustomerService:**  This makes use of the customer repository and in the controller layer.  
+
+**Customer Controller Layer:**  This class handles all requests from the clients.  
+
+**The Three Configurations classes:** To enable Spring Data JPA, we need to create two beans: EntityManagerFactory and JpaTransactionManager.  
+
+- @EnableJpaRepositories: this tells Spring Data JPA to look for repository classes in the specified package (net.codejava) in order to inject relevant code at runtime.
+
+- @EnableTransactionManagement: this tells Spring Data JPA to generate code for transaction management at runtime.
 ### JSON Schema  
 
 
