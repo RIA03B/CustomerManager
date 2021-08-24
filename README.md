@@ -86,9 +86,9 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 - DevOps/Product Owner/Scrum Master: Rania Ibrahim  
 
--	Frontend Developer:   
+-	Frontend Developer: Elijah Klopfstein
 
--	Integration Developer:  
+-	Integration Developer:  Darrion Hoard
  
 ### github.com project link:  
   
@@ -96,4 +96,4 @@ https://github.com/RIA03B/CustomerManager.git
 
 ### Weekly Meeting  
 
-. Use this Microsoft Teams:  
+Meeting at 6:00 pm  on Microsoft Teams.
