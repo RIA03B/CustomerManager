@@ -114,4 +114,4 @@ https://github.com/RIA03B/CustomerManager.git
 
 ### Weekly Meeting  
 
-Meeting at 6:00 pm  on Microsoft Teams.
+Meeting at 6:00 pm on Sunday night on Microsoft Teams.
