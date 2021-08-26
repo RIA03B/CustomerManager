@@ -81,6 +81,20 @@ Managers can interact with CustomerManager using either a set of RESTful service
 - @EnableTransactionManagement: this tells Spring Data JPA to generate code for transaction management at runtime.
 ### JSON Schema  
 
+> {
+>   "type": "object",
+>   "properties" : {
+>      "name" : {
+>          "type" : "string" 
+>       },
+>       "email" : {
+>          "type" : "string" 
+>       },
+>       "address" : {
+>          "type" : "string" 
+>       }
+>    }
+>   }
 
 ### Team Memebers and Roles  
 
