@@ -103,6 +103,10 @@ Managers can interact with CustomerManager using either a set of RESTful service
 -	Frontend Developer: Elijah Klopfstein
 
 -	Integration Developer:  Darrion Hoard
+
+## Milestones
+
+ [Milestone 1](https://github.com/RIA03B/CustomerManager/milestone/1)  
  
 ### github.com project link:  
   
