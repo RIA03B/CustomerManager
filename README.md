@@ -3,7 +3,7 @@
 
 Design Document  
 
-Rania Ibrahim,  
+Rania Ibrahim, Darrion Hoard, Elijah Klopfstein.  
 
 ## Introduction  
 
