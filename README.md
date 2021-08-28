@@ -90,11 +90,12 @@ Managers can interact with CustomerManager using either a set of RESTful service
 >       "email" : {
 >          "type" : "string" 
 >       },
->       "address" : {
->          "type" : "string" 
->       }
->    }
->   }
+>       "street" : { "type": "string", "description": "Street Address" },
+        "city" : { "type": "string", "description": "City" },
+        "state" : { "type": "string", "description": "State", "pattern": "[A-Z][A-Z]" },
+        "zip" : { "type": "string", "description": "Zip Code (5-digit)", "pattern": "[0-9][0-9][0-9][0-9][0-9]" }
+    }
+}
 
 ### Team Memebers and Roles  
 
