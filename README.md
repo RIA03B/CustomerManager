@@ -7,7 +7,7 @@ Rania Ibrahim, Darrion Hoard, Elijah Klopfstein.
 
 ## Introduction  
 
-CustomerManager allows managers to see customers and their information. The system essentially provides a central place where businesses can store customer and prospect data. This will help down the line with tracking customer interactions, and share there information with colleagues later on as needed. It allows businesses to manage relationships with customers, helping the business to grow. They can edit customers information or delete customers. They can add a new customer to the system. As well as searching for a specific customer.
+Managers can see customers and their information with CustomerManager. The system essentially serves as a central repository for companies to store customer and prospect information. This will aid in the tracking of customer interactions. It enables businesses to manage customer relationships, allowing them to grow. They have the ability to edit or delete customer information. They have the ability to add a new customer to the system. In addition to looking for a specific customer.
 
 Managers can interact with CustomerManager using either a set of RESTful service endpoints, or a simple UI, or both.
 
