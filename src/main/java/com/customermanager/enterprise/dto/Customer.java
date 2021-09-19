@@ -16,6 +16,12 @@ public class Customer {
         private String email;
         @Column(name = "address")
         private String address;
+        @Column(name = "city")
+        private String city;
+        @Column(name = "state")
+        private String state;
+        @Column(name = "country_code")
+        private String countryCode;
 
         public Long getId() {
             return id;
@@ -32,7 +38,8 @@ public class Customer {
         public String getLastName() {
             return lastName;
         }
-        public void setLastName(String lastName) {this.lastName = lastName;
+        public void setLastName(String lastName) {
+            this.lastName = lastName;
         }
         public String getEmail() {
             return email;
@@ -41,7 +48,7 @@ public class Customer {
             this.email = email;
         }
         public String getAddress() {
-                return address;
+                return address + " " + city + ", " + state + " " + countryCode;
             }
         public void setAddress(String address) {
                 this.address = address;
