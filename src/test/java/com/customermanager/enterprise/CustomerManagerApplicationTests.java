@@ -51,6 +51,62 @@ class CustomerManagerApplicationTests {
        verify(customerRepository, atLeastOnce()).save(customer);
     }
 
+
+    @Test
+    void saveCustomerUpdate_displayCustomerUpdate(){
+        givenCustomerUpdate();
+        whenCustomerUpdate();
+        thenCustomerUpdate();
+    }
+
+    private void givenCustomerUpdate() {
+    }
+    //Don't know if this is correct
+    private void whenCustomerUpdate() {
+        customer.setId(3L);
+        customer.setFirstName("James");
+        customer.setLastName("Hill");
+        customer.setEmail("James.Hill@gmail.com");
+        customer.setAddress("789 Bill Rd, Cincinnati, Ohio 45434");
+
+    }
+    //Don't know if this is correct
+    private void thenCustomerUpdate() {
+        Customer updateCustomer = customerRepository.save(customer);
+        assertEquals(customer, updateCustomer);
+        verify(customerRepository, atLeastOnce()).save(customer);
+    }
+
+    //Don't know if this is correct for the search
+    @Test
+    void fetchCustomerByID_returnsCustomerID3() throws Exception  {
+        givenCustomerDataAreAvailable();
+        whenCustomer3AddedIsJason();
+        whenSearchCustomerWithID3();
+        thenReturnCustomerID3();
+    }
+
+    private void whenCustomer3AddedIsJason() {
+        Customer customerJ = new Customer();
+        customerJ.setId(3L);
+        customerJ.setFirstName("Jason");
+        Mockito.when(customerRepository.getById(3L)).thenReturn(customerJ);
+    }
+
+    private void givenCustomerDataAreAvailable() throws Exception {
+        Mockito.when(customerRepository.save(customer)).thenReturn(customer);
+        customerService = new CustomerService(customerRepository);
+    }
+
+    private void whenSearchCustomerWithID3() {
+        customer = customerService.get(3);
+    }
+
+    private void thenReturnCustomerID3() {
+        String firstname = customer.getFirstName();
+        assertEquals("James", firstname);
+    }
+
     @Test
     void thisTest_ShouldFail() {
         assertEquals(4, 2+2);
