@@ -7,7 +7,7 @@ Rania Ibrahim, Darrion Hoard, Elijah Klopfstein.
 
 ## Introduction  
 
-CustomerManager allows managers to see customers and their information. They can edit customers information or delete customers. They can add a new customer to the system. As well as searching for a specific customer.
+Managers can see customers and their information with CustomerManager. The system essentially serves as a central repository for companies to store customer and prospect information. This will aid in the tracking of customer interactions. It enables businesses to manage customer relationships, allowing them to grow. They have the ability to edit or delete customer information. They have the ability to add a new customer to the system. In addition to looking for a specific customer.
 
 Managers can interact with CustomerManager using either a set of RESTful service endpoints, or a simple UI, or both.
 
@@ -22,9 +22,9 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 **Given**: A customers information is available.
 
-**When**: The manager selects edit next to the customers infomation.  
+**When**: The manager selects edit next to the customers infomation. Example (First Name: 'James', Last Name: 'Hill', Email: 'James.Hill@gmail.com', Address: '444 Mont St, Cincinnati, Ohio 45454'). 
 
-**Then**: Then manager can edit the information of the customer and it will be updated in the database.      
+**Then**: Then manager can edit the information of the customer and it will be updated in the database. Example (First Name: 'James', Last Name: 'Hill', Email: 'James.Hill@gmail.com', Address: '789 Bill Rd, Cincinnati, Ohio 45434').      
 
 
 2.  As a manager I want to be able to delete a customer, so that the customers information is deleted in my database.  
@@ -33,7 +33,7 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 **Given**: A customers information is available.
 
-**When**: The manager selects delete next to the customers infomation.  
+**When**: The manager selects delete next to the customers infomation. Example: delete customer thats first name is 'James'.
 
 **Then**: Then manager can delete that customer and it will be delete from the database.      
 
@@ -45,7 +45,7 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 **When**: The manager selects the tab and a form show up for the customers infomation.  
 
-**Then**: Then manager can add the information of the customer and it will be stored in the database.      
+**Then**: Then manager can add the information of the customer, which includes First Name: 'James', Last Name: 'Hill', Email: 'James.Hill@gmail.com', Address: '444 Mont St, Cincinnati, Ohio 45454'. This information will be stored in the database.      
 
 4.  As a manager I want to be able to specifically search for a customer, so that I can preview that customers informatio that is in my database.  
 
@@ -53,7 +53,7 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 **Given**: A search bar is available.
 
-**When**: The manager enters the customers infomation.  
+**When**: The manager enters any of the customers infomation, which include any thing from name, email, and address (First Name: 'James', Last Name: 'Hill', Email: 'James.Hill@gmail.com', Address: '444 Mont St, Cincinnati, Ohio 45454'). 
 
 **Then**: Then manager can then preview the information of the customer that is in the database.      
 

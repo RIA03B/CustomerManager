@@ -24,7 +24,7 @@ public class CustomerService implements ICustomerService {
     @Override
     public Customer get(long id) {
         Optional < Customer > optional = customerRepository.findById(id);
-        Customer customer = null;
+        Customer customer;
         if (optional.isPresent()) {
             customer = optional.get();
         } else {
@@ -37,7 +37,7 @@ public class CustomerService implements ICustomerService {
         this.customerRepository.deleteById(id);
     }
 
-    @Override
+
     public List<Customer> search(String keyword) {
         return customerRepository.search(keyword);
     }
