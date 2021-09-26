@@ -38,8 +38,7 @@ public class Customer {
         public String getLastName() {
             return lastName;
         }
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
+        public void setLastName(String lastName) {this.lastName = lastName;
         }
         public String getEmail() {
             return email;
@@ -48,8 +47,9 @@ public class Customer {
             this.email = email;
         }
         public String getAddress() {
-                return address + " " + city + ", " + state + " " + countryCode;
-            }
+            return address + " " + city + ", " + state + " " + countryCode;
+
+        }
         public void setAddress(String address) {
                 this.address = address;
             }

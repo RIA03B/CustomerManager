@@ -92,7 +92,7 @@ class CustomerManagerApplicationTests {
         customerJ.setFirstName("Jason");
         Mockito.when(customerRepository.getById(3L)).thenReturn(customerJ);
     }
-
+    //error occurs here??
     private void givenCustomerDataAreAvailable() throws Exception {
         Mockito.when(customerRepository.save(customer)).thenReturn(customer);
         customerService = new CustomerService(customerRepository);
