@@ -8,5 +8,6 @@ public interface ICustomerService {
     void save(Customer customer);
     Customer get(long id);
     void delete(long id);
+    List<Customer> search(String keyword);
 
 }

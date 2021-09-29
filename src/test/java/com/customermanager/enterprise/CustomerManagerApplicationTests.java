@@ -107,10 +107,6 @@ class CustomerManagerApplicationTests {
         assertEquals("James", firstname);
     }
 
-    @Test
-    void thisTest_ShouldFail() {
-        assertEquals(4, 2+2);
-    }
 
 }
 
