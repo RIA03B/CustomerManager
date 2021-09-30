@@ -17,8 +17,8 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 class CustomerManagerApplicationTests {
 
-
-    private ICustomerService customerService;
+    @MockBean
+    private CustomerService customerService;
     private Customer customer= new Customer();
     @MockBean
     private CustomerRepository customerRepository;
