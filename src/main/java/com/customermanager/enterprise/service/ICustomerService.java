@@ -5,9 +5,9 @@ import java.util.List;
 
 public interface ICustomerService {
     List<Customer> getAllCustomers();
-    void save(Customer customer);
+    void save(Customer customer) throws Exception;
     Customer get(long id);
-    void delete(long id);
+    void delete(long id) throws Exception;
     List<Customer> search(String keyword);
 
 }
