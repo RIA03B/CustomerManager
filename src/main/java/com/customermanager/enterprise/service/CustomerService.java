@@ -12,15 +12,8 @@ import com.customermanager.enterprise.dto.Customer;
 public class CustomerService implements ICustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-
     public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
     }
-
-    public CustomerService() {
-
-    }
-
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
