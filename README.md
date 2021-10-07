@@ -108,6 +108,10 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
  [Milestone 1](https://github.com/RIA03B/CustomerManager/milestone/1)  
  
+ [Milestone 2](https://github.com/RIA03B/CustomerManager/milestone/2)    
+ 
+ [Milestone 3](https://github.com/RIA03B/CustomerManager/milestone/3)  
+ 
 ### github.com project link:  
   
 https://github.com/RIA03B/CustomerManager.git  
