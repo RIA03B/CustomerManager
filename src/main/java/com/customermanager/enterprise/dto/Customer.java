@@ -28,4 +28,30 @@ public @Data class Customer {
         return address + " " + city + ", " + state + " " + countryCode;
     }
 
+    public Customer(Long id, String firstName, String lastName, String email, String address, String city, String state,
+            String countryCode) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.countryCode = countryCode;
+    }
+
+    public Customer(String firstName, String lastName, String email, String address, String city, String state,
+            String countryCode) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.countryCode = countryCode;
+    }
+
+    public Customer() {
+    }
+
 }
