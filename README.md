@@ -3,7 +3,7 @@
 
 Design Document  
 
-Rania Ibrahim, Darrion Hoard, Elijah Klopfstein.  
+Rania Ibrahim, Christian Turner, Elijah Klopfstein.  
 
 ## Introduction  
 
@@ -102,11 +102,15 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 -	Frontend Developer: Elijah Klopfstein
 
--	Integration Developer:  Darrion Hoard
+-	Integration Developer:  Christian Turner
 
 ## Milestones
 
  [Milestone 1](https://github.com/RIA03B/CustomerManager/milestone/1)  
+ 
+ [Milestone 2](https://github.com/RIA03B/CustomerManager/milestone/2)    
+ 
+ [Milestone 3](https://github.com/RIA03B/CustomerManager/milestone/3)  
  
 ### github.com project link:  
   
