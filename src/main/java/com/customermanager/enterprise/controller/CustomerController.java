@@ -9,7 +9,10 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-
+/**
+ * This class handles all requests from the clients.
+ * The customer manager application features include: displaying all customers, creating a new customer, edit customer info, delete customers, and search for customers.
+ */
 @Controller
 public class CustomerController {
     @Autowired

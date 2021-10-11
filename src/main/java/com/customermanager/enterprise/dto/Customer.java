@@ -2,6 +2,12 @@ package com.customermanager.enterprise.dto;
 
 import javax.persistence.*;
 
+/**
+ * This is the Model Layer
+ * This class is representing the data that can be persisted to the database.
+ * Every instance represents a row in the table that is being stored in the database.
+ * The table name is customer, and it holds first & last name, email, address, city, state, and country.
+ */
 @Entity
 @Table(name = "customer")
 public class Customer {
