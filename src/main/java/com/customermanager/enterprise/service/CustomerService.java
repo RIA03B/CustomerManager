@@ -1,6 +1,5 @@
 package com.customermanager.enterprise.service;
 
-
 import java.util.List;
 import java.util.Optional;
 import com.customermanager.enterprise.dao.CustomerRepository;
@@ -14,6 +13,7 @@ import com.customermanager.enterprise.dto.Customer;
  * It encapsulates the application's business logic, controlling transactions and coordinates responses in the implementation of its operations.
  */
 @Service
+
 public class CustomerService implements ICustomerService {
     @Autowired
     private CustomerRepository customerRepository;
