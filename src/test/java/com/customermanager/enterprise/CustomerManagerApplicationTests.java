@@ -1,9 +1,8 @@
 package com.customermanager.enterprise;
 
 import com.customermanager.enterprise.dao.CustomerRepository;
-import com.customermanager.enterprise.dto.Customer;
+import com.customermanager.enterprise.dto.CustomerDTO;
 import com.customermanager.enterprise.service.CustomerService;
-import com.customermanager.enterprise.service.ICustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -19,7 +18,7 @@ class CustomerManagerApplicationTests {
 
     @MockBean
     private CustomerService customerService;
-    private Customer customer= new Customer();
+    private CustomerDTO customer= new CustomerDTO();
     @MockBean
     private CustomerRepository customerRepository;
 
@@ -36,9 +35,9 @@ class CustomerManagerApplicationTests {
     private void givenNewCustomerTabIsAvailable() {
     }
 
-    // Populates the Customer model
+    // Populates the CustomerDTO model
     private void whenSelectingCreateNewCustomer() {
-        customer.setId(3L);
+        customer.setId(3);
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
@@ -49,12 +48,12 @@ class CustomerManagerApplicationTests {
     // Creates a customer and saves it to the repository,
     // then checks if the saved customer returns correctly from the repository
     private void thenAddNewCustomerInformation() {
-       Customer createCustomer = customerRepository.save(customer);
+       CustomerDTO createCustomer = customerRepository.save(customer);
        assertEquals(customer, createCustomer);
        verify(customerRepository, atLeastOnce()).save(customer);
     }
 
-    // Given Customer -> Populate Customer model -> Verify customer saves correctly
+    // Given CustomerDTO -> Populate CustomerDTO model -> Verify customer saves correctly
     @Test
     void saveCustomerUpdate_displayCustomerUpdate(){
         givenCustomerUpdate();
@@ -66,7 +65,7 @@ class CustomerManagerApplicationTests {
     }
     //Don't know if this is correct
     private void whenCustomerUpdate() {
-        customer.setId(3L);
+        customer.setId(3);
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
@@ -75,7 +74,8 @@ class CustomerManagerApplicationTests {
     }
     //Don't know if this is correct
     private void thenCustomerUpdate() {
-        Customer updateCustomer = customerRepository.save(customer);
+        customerRepository.save(customer);
+        var updateCustomer = customerRepository.getCustomerById(3);
         assertEquals(customer, updateCustomer);
         verify(customerRepository, atLeastOnce()).save(customer);
     }
@@ -90,10 +90,10 @@ class CustomerManagerApplicationTests {
     }
 
     private void whenCustomer3AddedIsJason() {
-        Customer customerJ = new Customer();
-        customerJ.setId(3L);
+        CustomerDTO customerJ = new CustomerDTO();
+        customerJ.setId(3);
         customerJ.setFirstName("Jason");
-        Mockito.when(customerRepository.getById(3L)).thenReturn(customerJ);
+        Mockito.when(customerRepository.getCustomerById(3)).thenReturn(customerJ);
     }
     //error occurs here??
     private void givenCustomerDataAreAvailable() throws Exception {
@@ -102,7 +102,7 @@ class CustomerManagerApplicationTests {
     }
 
     private void whenSearchCustomerWithID3() {
-        customer = customerService.get(3);
+        customer = customerService.getCustomerById(3);
     }
 
     private void thenReturnCustomerID3() {
