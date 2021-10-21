@@ -19,7 +19,7 @@ public class CustomerController {
     private CustomerService customerService;
     // display list of Customers
     @GetMapping("/")
-    public String viewHomePage(Model model) {
+    public String viewHomePage(Model model) throws Exception {
         model.addAttribute("listCustomer", customerService.getAllCustomers());
         return "index";
     }
