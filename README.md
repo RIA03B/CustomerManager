@@ -3,7 +3,7 @@
 
 Design Document  
 
-Rania Ibrahim, Darrion Hoard, Elijah Klopfstein.  
+Rania Ibrahim, Christian Turner, Elijah Klopfstein.  
 
 ## Introduction  
 
@@ -102,7 +102,7 @@ Managers can interact with CustomerManager using either a set of RESTful service
 
 -	Frontend Developer: Elijah Klopfstein
 
--	Integration Developer:  Darrion Hoard
+-	Integration Developer:  Christian Turner
 
 ## Milestones
 

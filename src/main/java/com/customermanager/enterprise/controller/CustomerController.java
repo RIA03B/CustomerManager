@@ -9,14 +9,17 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
-
+/**
+ * This class handles all requests from the clients.
+ * The customer manager application features include: displaying all customers, creating a new customer, edit customer info, delete customers, and search for customers.
+ */
 @Controller
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
     // display list of Customers
     @GetMapping("/")
-    public String viewHomePage(Model model) throws Exception {
+    public String viewHomePage(Model model) {
         model.addAttribute("listCustomer", customerService.getAllCustomers());
         return "index";
     }
@@ -28,7 +31,7 @@ public class CustomerController {
         return "new_customer";
     }
     @PostMapping("/save")
-    public String saveEmployee(@ModelAttribute("customer") CustomerDTO customer) throws Exception {
+    public String saveCustomer(@ModelAttribute("customer") CustomerDTO customer) throws Exception {
         // save employee to database
         customerService.save(customer);
         return "redirect:/";

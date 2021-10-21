@@ -1,6 +1,5 @@
 package com.customermanager.enterprise.service;
 
-
 import java.util.List;
 import java.util.Optional;
 
@@ -10,7 +9,13 @@ import com.customermanager.enterprise.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+/**
+ * This class defines the application's boundary.
+ * It is a set of available operations from the perspective of interfacing client layers.
+ * It encapsulates the application's business logic, controlling transactions and coordinates responses in the implementation of its operations.
+ */
 @Service
+
 public class CustomerService implements ICustomerService {
     @Autowired
     CustomerDAO customerDAO;
