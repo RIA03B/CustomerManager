@@ -15,8 +15,8 @@ import org.springframework.stereotype.Service;
  * It encapsulates the application's business logic, controlling transactions and coordinates responses in the implementation of its operations.
  */
 @Service
-
 public class CustomerService implements ICustomerService {
+
     @Autowired
     CustomerDAO customerDAO;
 
@@ -24,6 +24,7 @@ public class CustomerService implements ICustomerService {
     private CustomerRepository customerRepository;
 
     public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
 
     @Override
