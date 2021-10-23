@@ -13,12 +13,14 @@ import com.customermanager.enterprise.dto.Customer;
  * It encapsulates the application's business logic, controlling transactions and coordinates responses in the implementation of its operations.
  */
 @Service
-
 public class CustomerService implements ICustomerService {
-    @Autowired
+
     private CustomerRepository customerRepository;
+    @Autowired
     public CustomerService(CustomerRepository customerRepository) {
+        this.customerRepository = customerRepository;
     }
+
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
