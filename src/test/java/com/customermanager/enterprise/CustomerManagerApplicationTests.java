@@ -36,6 +36,7 @@ class CustomerManagerApplicationTests {
     private void givenNewCustomerTabIsAvailable() {
     }
 
+    // Populates the Customer model
     private void whenSelectingCreateNewCustomer() {
         customer.setId(3L);
         customer.setFirstName("James");
@@ -45,13 +46,15 @@ class CustomerManagerApplicationTests {
 
     }
 
+    // Creates a customer and saves it to the repository,
+    // then checks if the saved customer returns correctly from the repository
     private void thenAddNewCustomerInformation() {
        Customer createCustomer = customerRepository.save(customer);
        assertEquals(customer, createCustomer);
        verify(customerRepository, atLeastOnce()).save(customer);
     }
 
-
+    // Given Customer -> Populate Customer model -> Verify customer saves correctly
     @Test
     void saveCustomerUpdate_displayCustomerUpdate(){
         givenCustomerUpdate();
