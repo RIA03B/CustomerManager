@@ -16,9 +16,11 @@ import java.util.List;
  */
 @Controller
 public class CustomerController {
+    private final CustomerService customerService;
     @Autowired
-    ICustomerService customerService;
-
+    public CustomerController(CustomerService customerService){
+        this.customerService=customerService;
+    }
     // display list of Customers
     @GetMapping("/")
     public String viewHomePage(Model model) {

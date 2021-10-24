@@ -17,7 +17,12 @@ public class CustomerService implements ICustomerService {
 
     private CustomerRepository customerRepository;
     @Autowired
+    public CustomerService() {
+
+    }
+
     public CustomerService(CustomerRepository customerRepository) {
+
         this.customerRepository = customerRepository;
     }
 
