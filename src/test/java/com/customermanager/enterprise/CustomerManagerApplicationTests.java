@@ -3,7 +3,6 @@ package com.customermanager.enterprise;
 import com.customermanager.enterprise.dao.CustomerRepository;
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.CustomerService;
-import com.customermanager.enterprise.service.ICustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 

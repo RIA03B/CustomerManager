@@ -16,7 +16,7 @@ import java.util.List;
  */
 @Controller
 public class CustomerController {
-    private final CustomerService customerService;
+    private final ICustomerService customerService;
     @Autowired
     public CustomerController(CustomerService customerService){
         this.customerService=customerService;
