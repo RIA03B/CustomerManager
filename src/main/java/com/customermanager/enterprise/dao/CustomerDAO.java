@@ -5,13 +5,14 @@ import com.customermanager.enterprise.dao.ICustomerDAO;
 import com.customermanager.enterprise.dto.CustomerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Component
+@Repository
 public class CustomerDAO implements ICustomerDAO {
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 
     @Override
     public boolean save(CustomerDTO customerDTO) throws Exception {
@@ -26,6 +27,6 @@ public class CustomerDAO implements ICustomerDAO {
 
     @Override
     public CustomerDTO getCustomerById(int customerId) {
-        return customerRepository.getCustomerById(customerId);
+        return customerRepository.findById(customerId).get();
     }
 }

@@ -14,9 +14,6 @@ import java.util.List;
  * We declared an interface that extends the CrudRepository interface, which defines CRUD methods like save(), findAll(), findById(),deleteById(), etc.
  * At runtime, Spring JPA automatically generates the implementation code.
  */
-@Repository
 public interface CustomerRepository extends CrudRepository<CustomerDTO, Integer> {
-      List<CustomerDTO> search(@Param("keyword") String keyword);
 
-      CustomerDTO getCustomerById(int customerId);
 }

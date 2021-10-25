@@ -75,7 +75,7 @@ class CustomerManagerApplicationTests {
     //Don't know if this is correct
     private void thenCustomerUpdate() {
         customerRepository.save(customer);
-        var updateCustomer = customerRepository.getCustomerById(3);
+        var updateCustomer = customerRepository.findById(customer.getId());
         assertEquals(customer, updateCustomer);
         verify(customerRepository, atLeastOnce()).save(customer);
     }
@@ -93,12 +93,11 @@ class CustomerManagerApplicationTests {
         CustomerDTO customerJ = new CustomerDTO();
         customerJ.setId(3);
         customerJ.setFirstName("Jason");
-        Mockito.when(customerRepository.getCustomerById(3)).thenReturn(customerJ);
+   /*     Mockito.when(customerRepository.findById(3)).thenReturn(customerJ);*/
     }
     //error occurs here??
     private void givenCustomerDataAreAvailable() throws Exception {
         Mockito.when(customerRepository.save(customer)).thenReturn(customer);
-        customerService = new CustomerService(customerRepository);
     }
 
     private void whenSearchCustomerWithID3() {

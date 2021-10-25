@@ -12,8 +12,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "customer")
-public @Data
-class CustomerDTO {
+public @Data class CustomerDTO {
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         private int id;

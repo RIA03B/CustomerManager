@@ -23,9 +23,6 @@ public class CustomerService implements ICustomerService {
     @Autowired
     private CustomerRepository customerRepository;
 
-    public CustomerService(CustomerRepository customerRepository) {
-        this.customerRepository = customerRepository;
-    }
 
     @Override
     public Iterable<CustomerDTO> getAllCustomers() throws Exception {
@@ -55,7 +52,4 @@ public class CustomerService implements ICustomerService {
         this.customerRepository.deleteById(id);
     }
 
-    public List<CustomerDTO> search(String keyword) {
-        return customerRepository.search(keyword);
-    }
 }

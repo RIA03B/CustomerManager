@@ -55,12 +55,12 @@ public class CustomerController {
         this.customerService.delete(id);
         return "redirect:/";
     }
-    @GetMapping("/search")
+ /*   @GetMapping("/search")
     public ModelAndView search(@RequestParam String keyword) {
         List<CustomerDTO> result = customerService.search(keyword);
         ModelAndView mav = new ModelAndView("search");
         mav.addObject("result", result);
 
         return mav;
-    }
+    }*/
 }

@@ -15,6 +15,5 @@ public interface ICustomerService {
 
     void delete(int id);
 
-    List<CustomerDTO> search(String keyword);
 
 }
