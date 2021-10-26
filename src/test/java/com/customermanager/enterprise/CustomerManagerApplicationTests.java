@@ -48,9 +48,9 @@ class CustomerManagerApplicationTests {
     // Creates a customer and saves it to the repository,
     // then checks if the saved customer returns correctly from the repository
     private void thenAddNewCustomerInformation() {
-       Customer createCustomer = customerRepository.save(customer);
-       assertEquals(customer, createCustomer);
-       verify(customerRepository, atLeastOnce()).save(customer);
+        Customer createCustomer = customerRepository.save(customer);
+        assertEquals(customer, createCustomer);
+        verify(customerRepository, atLeastOnce()).save(customer);
     }
 
     // Given Customer -> Populate Customer model -> Verify customer saves correctly
@@ -97,7 +97,6 @@ class CustomerManagerApplicationTests {
     //error occurs here??
     private void givenCustomerDataAreAvailable() throws Exception {
         Mockito.when(customerRepository.save(customer)).thenReturn(customer);
-        customerService = new CustomerService(customerRepository);
     }
 
     private void whenSearchCustomerWithID3() {
@@ -108,7 +107,4 @@ class CustomerManagerApplicationTests {
         String firstname = customer.getFirstName();
         assertEquals("James", firstname);
     }
-
-
 }
-

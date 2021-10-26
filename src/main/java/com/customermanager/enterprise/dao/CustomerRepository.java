@@ -12,6 +12,7 @@ import java.util.List;
  * We created a CustomerRepository interface, which is code we need for the data access layer.
  * We declared an interface that extends the CrudRepository interface, which defines CRUD methods like save(), findAll(), findById(),deleteById(), etc.
  * At runtime, Spring JPA automatically generates the implementation code.
+ * @author Rania Ibrahim, Christian Turner, Elijah Klopfstein
  */
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {

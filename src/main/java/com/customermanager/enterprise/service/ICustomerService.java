@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Customer Service handles logic for Customer DTO.
  * This interface returns all saved customers, saves a new customer, deletes a customer, and searches for a customer.
+ * @author Rania Ibrahim, Christian Turner, Elijah Klopfstein
  */
 public interface ICustomerService {
     List<Customer> getAllCustomers();
