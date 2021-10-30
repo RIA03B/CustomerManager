@@ -1,7 +1,6 @@
 package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
-import com.customermanager.enterprise.service.CustomerService;
 import com.customermanager.enterprise.service.ICustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +42,7 @@ public class CustomerController {
     }
     /**
      * Save customer to database
-     * @return
+     * @return Save customer then redirect them to the main page
      */
     @PostMapping("/save")
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
@@ -67,7 +66,7 @@ public class CustomerController {
     }
     /**
      * Delete Customer
-     * @return
+     * @return Delete customer then redirect them to the main page
      */
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable(value = "id") long id) {
