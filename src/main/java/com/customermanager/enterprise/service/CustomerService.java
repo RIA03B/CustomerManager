@@ -3,7 +3,6 @@ package com.customermanager.enterprise.service;
 import java.util.List;
 import java.util.Optional;
 import com.customermanager.enterprise.dao.CustomerRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.customermanager.enterprise.dto.Customer;
 
@@ -15,10 +14,11 @@ import com.customermanager.enterprise.dto.Customer;
  */
 @Service
 public class CustomerService implements ICustomerService {
-    @Autowired
-    private CustomerRepository customerRepository;
+    CustomerRepository customerRepository;
 
-   /** public CustomerService() {
+
+
+    /**public CustomerService() {
 
     }*/
     @Override
