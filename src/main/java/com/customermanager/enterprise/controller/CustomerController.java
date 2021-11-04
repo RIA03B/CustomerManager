@@ -24,7 +24,7 @@ public class CustomerController {
      */
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        model.addAttribute("listCustomer", customerService.getAllCustomers());
+        //model.addAttribute("listCustomer", customerService.getAllCustomers());
         return "index";
     }
     /**
