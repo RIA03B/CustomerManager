@@ -50,5 +50,10 @@ public class CustomerService implements ICustomerService {
         return customerRepository.search(keyword);
     }
 
+    @Override
+    public Customer create(Customer customer) {
+        return null;
+    }
+
 
 }
