@@ -2,6 +2,7 @@ package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,15 @@ import java.util.List;
  */
 @Controller
 public class CustomerController {
+
+    @Autowired
     ICustomerService customerService;
 
-
-    /**
+     /**
      * Display list of Customers
      * @return main index page
      */
+
     @GetMapping("/")
     public String viewHomePage(Model model) {
         //model.addAttribute("listCustomer", customerService.getAllCustomers());
