@@ -45,10 +45,20 @@ public class CustomerController {
      * Save customer to database
      * @return Save customer then redirect them to the main page
      */
-    @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute("customer") Customer customer) {
-        customerService.save(customer);
-        return "redirect:/";
+    @PostMapping(value="/save")
+    public String saveCustomer(@ModelAttribute("customer") Customer savedCustomer, Model model) {
+
+        Customer newCustomer = null;
+        try {
+            newCustomer = customerService.create(savedCustomer);
+        }
+        catch (Exception ex)
+        {
+            //TODO: LOGGING/Exception handling
+            throw ex;
+        }
+        return "index";
+
     }
     /**
      * Get customer from the service.

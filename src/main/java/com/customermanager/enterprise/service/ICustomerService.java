@@ -14,4 +14,5 @@ public interface ICustomerService {
     void delete(long id);
     List<Customer> search(String keyword);
 
+    Customer create(Customer customer);
 }
