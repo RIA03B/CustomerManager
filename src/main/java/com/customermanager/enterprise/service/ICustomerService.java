@@ -8,10 +8,24 @@ import java.util.List;
  * @author Rania Ibrahim, Christian Turner, Elijah Klopfstein
  */
 public interface ICustomerService {
+
+    /**
+     * Return all saved customers.
+     * @return a collection of all customer entries.
+     */
     List<Customer> getAllCustomers();
-    void save(Customer customer);
+    /**
+     * Save a new customer
+     * @param customer the entry to save.
+     * @return a customer object.
+     */
+    void save(Customer customer) throws Exception;
+    /**
+     * Return a customer with a given ID.
+     * @param id a unique identifier for a specific customer.
+     * @return a matching customer, or null if no matches are found.
+     */
     Customer get(long id);
     void delete(long id);
     List<Customer> search(String keyword);
-
 }

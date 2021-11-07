@@ -2,7 +2,11 @@ package com.customermanager.enterprise.service;
 
 import java.util.List;
 import java.util.Optional;
+
+import com.customermanager.enterprise.dao.CustomerDAO;
 import com.customermanager.enterprise.dao.CustomerRepository;
+import com.customermanager.enterprise.dao.ICustomerDAO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.customermanager.enterprise.dto.Customer;
 
@@ -14,20 +18,28 @@ import com.customermanager.enterprise.dto.Customer;
  */
 @Service
 public class CustomerService implements ICustomerService {
+
     CustomerRepository customerRepository;
 
+    @Autowired
+    private ICustomerDAO customerDAO;
 
+    public CustomerService() {
 
-    /**public CustomerService() {
+    }
 
-    }*/
+    public CustomerService(CustomerDAO customerDAO){
+        this.customerDAO = customerDAO;
+    }
+
     @Override
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
+
     @Override
-    public void save(Customer customer) {
-        this.customerRepository.save(customer);
+    public void save(Customer customer) throws Exception {
+        this.customerDAO.save(customer);
     }
     @Override
     public Customer get(long id) {
