@@ -1,8 +1,10 @@
 package com.customermanager.enterprise;
 
 import com.customermanager.enterprise.dao.CustomerRepository;
+import com.customermanager.enterprise.dao.ICustomerDAO;
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.CustomerService;
+import com.customermanager.enterprise.service.ICustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -16,11 +18,13 @@ import static org.mockito.Mockito.verify;
 @SpringBootTest
 class CustomerManagerApplicationTests {
 
-    @MockBean
-    private CustomerService customerService;
+
+    private ICustomerService customerService;
     private Customer customer= new Customer();
     @MockBean
     private CustomerRepository customerRepository;
+    @MockBean
+    private ICustomerDAO customerDAO;
 
     @Test
     void contextLoads() {

@@ -2,10 +2,17 @@ package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.awt.*;
+import org.springframework.http.HttpHeaders;
 import java.util.List;
 
 /**
@@ -15,6 +22,8 @@ import java.util.List;
  */
 @Controller
 public class CustomerController {
+
+    @Autowired
     ICustomerService customerService;
 
 
@@ -44,7 +53,14 @@ public class CustomerController {
      */
     @PostMapping("/save")
     public String saveCustomer(@ModelAttribute("customer") Customer customer) {
-        customerService.save(customer);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        try {
+            customerService.save(customer);
+        } catch (Exception e){
+            String error = new ResponseEntity(headers, HttpStatus.INTERNAL_SERVER_ERROR).toString();
+            return error;
+        }
         return "redirect:/";
     }
     /**
@@ -83,4 +99,5 @@ public class CustomerController {
 
         return mav;
     }
+
 }
