@@ -2,6 +2,7 @@ package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -15,13 +16,15 @@ import java.util.List;
  */
 @Controller
 public class CustomerController {
+
+    @Autowired
     ICustomerService customerService;
 
-
-    /**
+     /**
      * Display list of Customers
      * @return main index page
      */
+
     @GetMapping("/")
     public String viewHomePage(Model model) {
         //model.addAttribute("listCustomer", customerService.getAllCustomers());
@@ -42,10 +45,20 @@ public class CustomerController {
      * Save customer to database
      * @return Save customer then redirect them to the main page
      */
-    @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute("customer") Customer customer) {
-        customerService.save(customer);
-        return "redirect:/";
+    @PostMapping(value="/save")
+    public String saveCustomer(@ModelAttribute("customer") Customer savedCustomer, Model model) {
+
+        Customer newCustomer = null;
+        try {
+            newCustomer = customerService.create(savedCustomer);
+        }
+        catch (Exception ex)
+        {
+            //TODO: LOGGING/Exception handling
+            throw ex;
+        }
+        return "index";
+
     }
     /**
      * Get customer from the service.

@@ -1,5 +1,7 @@
 package com.customermanager.enterprise.dto;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
 /**
@@ -11,7 +13,8 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "customer")
-public class Customer {
+public @Data
+class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
