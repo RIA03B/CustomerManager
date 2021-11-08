@@ -16,13 +16,19 @@
     <hr>
     <h2>Save Customer</h2>
     <form action="#" th:action="@{/save}" th:object="${customer}" method="POST">
-        <input type="text" th:field="*{firstName}" placeholder="Customer First Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{firstName}" placeholder="Customer First Name" class="form-control mb-4 col-4" required>
 
-        <input type="text" th:field="*{lastName}" placeholder="Customer Last Name" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{lastName}" placeholder="Customer Last Name" class="form-control mb-4 col-4" required>
 
-        <input type="text" th:field="*{email}" placeholder="Customer Email" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{email}" placeholder="Customer Email" class="form-control mb-4 col-4" required>
 
-        <input type="text" th:field="*{address}" placeholder="Customer Address" class="form-control mb-4 col-4">
+        <input type="text" th:field="*{address}" placeholder="Customer Address Number" class="form-control mb-4 col-4" required>
+
+        <input type="text" th:field="*{city}" placeholder="Customer City" class="form-control mb-4 col-4" required>
+
+        <input type="text" th:field="*{state}" placeholder="Customer State" class="form-control mb-4 col-4" required>
+
+        <input type="text" th:field="*{countryCode}" placeholder="Customer Country Code" class="form-control mb-4 col-4" required>
 
         <button type="submit" class="btn btn-info col-2"> Save Customer</button>
     </form>
