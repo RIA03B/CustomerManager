@@ -9,26 +9,30 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 /**
- * This class handles all requests from the clients.
- * The customer manager application features include: displaying all customers, creating a new customer, edit customer info, delete customers, and search for customers.
+ * This class handles all requests from the clients. The customer manager
+ * application features include: displaying all customers, creating a new
+ * customer, edit customer info, delete customers, and search for customers.
+ * 
  * @author Rania Ibrahim, Christian Turner, Elijah Klopfstein
  */
 @Controller
 public class CustomerController {
     ICustomerService customerService;
 
-
     /**
      * Display list of Customers
+     * 
      * @return main index page
      */
     @GetMapping("/")
     public String viewHomePage(Model model) {
-        //model.addAttribute("listCustomer", customerService.getAllCustomers());
+        model.addAttribute("listCustomer", customerService.getAllCustomers());
         return "index";
     }
+
     /**
      * Display New Customer form
+     * 
      * @return new customer page
      */
     @GetMapping("/showNewCustomerForm")
@@ -38,8 +42,10 @@ public class CustomerController {
         model.addAttribute("customer", customer);
         return "new_customer";
     }
+
     /**
      * Save customer to database
+     * 
      * @return Save customer then redirect them to the main page
      */
     @PostMapping("/save")
@@ -47,32 +53,47 @@ public class CustomerController {
         customerService.save(customer);
         return "redirect:/";
     }
+
     /**
-     * Get customer from the service.
-     * Set customer as a model attribute to pre-populate the form
+     * Get customer from the service. Set customer as a model attribute to
+     * pre-populate the form
+     * 
      * @return edit customer page
      */
     @GetMapping("/edit/{id}")
     public String edit(@PathVariable(value = "id") long id, Model model) {
 
         // get customer from the service
-        Customer customer = customerService.get(id);
+        try {
+            Customer customer = customerService.get(id);
+            model.addAttribute("customer", customer);
+        } catch (Exception e) {
+            new IllegalArgumentException("Invalid customer id: " + id);
+        }
 
         // set customer as a model attribute to pre-populate the form
-        model.addAttribute("customer", customer);
+
         return "edit_customer";
     }
+
     /**
      * Delete Customer
+     * 
      * @return Delete customer then redirect them to the main page
      */
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable(value = "id") long id) {
-        this.customerService.delete(id);
+        try {
+            this.customerService.delete(id);
+        } catch (Exception e) {
+            new IllegalArgumentException("Invalid customer id: " + id);
+        }
         return "redirect:/";
     }
+
     /**
      * Search for a customer
+     * 
      * @return customer that was searched for.
      */
     @GetMapping("/search")
