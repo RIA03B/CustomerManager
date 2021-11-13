@@ -27,19 +27,16 @@ public class CustomerService implements ICustomerService {
      * }
      */
     @Override
-    @Cacheable("customers")
     public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
     @Override
-    @Cacheable(value = "save")
     public void save(Customer customer) {
         this.customerRepository.save(customer);
     }
 
     @Override
-    @Cacheable(value = "customer")
     public Customer get(long id) {
         Optional<Customer> optional = customerRepository.findById(id);
         Customer customer;
@@ -52,7 +49,6 @@ public class CustomerService implements ICustomerService {
     }
 
     @Override
-    @CacheEvict(value = "delete", key = "#id")
     public void delete(long id) {
         this.customerRepository.deleteById(id);
     }
