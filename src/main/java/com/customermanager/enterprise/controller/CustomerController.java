@@ -83,11 +83,8 @@ public class CustomerController {
      */
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable(value = "id") long id) {
-        try {
-            this.customerService.delete(id);
-        } catch (Exception e) {
-            new IllegalArgumentException("Invalid customer id: " + id);
-        }
+
+        this.customerService.delete(id);
         return "redirect:/";
     }
 
