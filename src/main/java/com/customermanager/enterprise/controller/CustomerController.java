@@ -3,36 +3,36 @@ package com.customermanager.enterprise.controller;
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
 import org.springframework.stereotype.Controller;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import java.util.List;
 
 /**
  * This class handles all requests from the clients. The customer manager
  * application features include: displaying all customers, creating a new
  * customer, edit customer info, delete customers, and search for customers.
- * 
+ *
  * @author Rania Ibrahim, Christian Turner, Elijah Klopfstein
  */
 @Controller
 public class CustomerController {
+    @Autowired
     ICustomerService customerService;
 
     /**
      * Display list of Customers
-     * 
+     *
      * @return main index page
      */
     @GetMapping("/")
-    public String viewHomePage(Model model) {
-        model.addAttribute("listCustomer", customerService.getAllCustomers());
+    public String viewHomePage(Model model) throws Exception {
+        model.addAttribute("listCustomer", customerService.fetchAll());
         return "index";
     }
 
     /**
      * Display New Customer form
-     * 
+     *
      * @return new customer page
      */
     @GetMapping("/showNewCustomerForm")
@@ -45,11 +45,11 @@ public class CustomerController {
 
     /**
      * Save customer to database
-     * 
+     *
      * @return Save customer then redirect them to the main page
      */
     @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute("customer") Customer customer) {
+    public String saveCustomer(@ModelAttribute("customer") Customer customer) throws Exception {
         customerService.save(customer);
         return "redirect:/";
     }
@@ -57,52 +57,45 @@ public class CustomerController {
     /**
      * Get customer from the service. Set customer as a model attribute to
      * pre-populate the form
-     * 
+     *
      * @return edit customer page
      */
     @GetMapping("/edit/{id}")
-    public String edit(@PathVariable(value = "id") long id, Model model) {
+    public String edit(@PathVariable(value = "id") int id, Model model) {
 
         // get customer from the service
-        try {
-            Customer customer = customerService.get(id);
-            model.addAttribute("customer", customer);
-        } catch (Exception e) {
-            new IllegalArgumentException("Invalid customer id: " + id);
-        }
+        Customer customer = customerService.fetch(id);
 
         // set customer as a model attribute to pre-populate the form
-
+        model.addAttribute("customer", customer);
         return "edit_customer";
     }
 
     /**
      * Delete Customer
-     * 
+     *
      * @return Delete customer then redirect them to the main page
      */
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable(value = "id") long id) {
+    public String delete(@PathVariable(value = "id") int id) throws Exception {
 
-        try {
-            this.customerService.delete(id);
-        } catch (Exception e) {
-            new IllegalArgumentException("Invalid customer id: " + id);
-        }
+        // call delete customer method
+        this.customerService.delete(id);
         return "redirect:/";
     }
+ /*   @GetMapping("/search")
 
     /**
      * Search for a customer
-     * 
+     *
      * @return customer that was searched for.
      */
-    @GetMapping("/search")
+    /*@GetMapping("/search")
     public ModelAndView search(@RequestParam String keyword) {
         List<Customer> result = customerService.search(keyword);
         ModelAndView mav = new ModelAndView("search");
         mav.addObject("result", result);
 
         return mav;
-    }
+    }*/
 }

@@ -37,7 +37,7 @@ class CustomerManagerApplicationTests {
 
     // Populates the Customer model
     private void whenSelectingCreateNewCustomer() {
-        customer.setId(3L);
+        customer.setId(3);
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
@@ -65,7 +65,7 @@ class CustomerManagerApplicationTests {
     }
     //Don't know if this is correct
     private void whenCustomerUpdate() {
-        customer.setId(3L);
+        customer.setId(3);
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
@@ -74,7 +74,8 @@ class CustomerManagerApplicationTests {
     }
     //Don't know if this is correct
     private void thenCustomerUpdate() {
-        Customer updateCustomer = customerRepository.save(customer);
+        customerRepository.save(customer);
+        var updateCustomer = customerRepository.findById(customer.getId());
         assertEquals(customer, updateCustomer);
         verify(customerRepository, atLeastOnce()).save(customer);
     }
@@ -90,9 +91,9 @@ class CustomerManagerApplicationTests {
 
     private void whenCustomer3AddedIsJason() {
         Customer customerJ = new Customer();
-        customerJ.setId(3L);
+        customerJ.setId(3);
         customerJ.setFirstName("Jason");
-        Mockito.when(customerRepository.getById(3L)).thenReturn(customerJ);
+   /*     Mockito.when(customerRepository.findById(3)).thenReturn(customerJ);*/
     }
     //error occurs here??
     private void givenCustomerDataAreAvailable() throws Exception {
@@ -100,7 +101,7 @@ class CustomerManagerApplicationTests {
     }
 
     private void whenSearchCustomerWithID3() {
-        customer = customerService.get(3);
+        customer = customerService.fetch(3);
     }
 
     private void thenReturnCustomerID3() {
