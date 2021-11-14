@@ -1,14 +1,11 @@
 package com.customermanager.enterprise.controller;
 
-import com.customermanager.enterprise.dto.CustomerDTO;
-import com.customermanager.enterprise.service.CustomerService;
+import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-import java.util.List;
 
 /**
  * This class handles all requests from the clients.
@@ -22,18 +19,18 @@ public class CustomerController {
     // display list of Customers
     @GetMapping("/")
     public String viewHomePage(Model model) throws Exception {
-        model.addAttribute("listCustomer", customerService.getAllCustomers());
+        model.addAttribute("listCustomer", customerService.fetchAll());
         return "index";
     }
     @GetMapping("/showNewCustomerForm")
     public String showNewCustomerForm(Model model) {
         // create model attribute to bind form data
-        CustomerDTO customer = new CustomerDTO();
+        Customer customer = new Customer();
         model.addAttribute("customer", customer);
         return "new_customer";
     }
     @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute("customer") CustomerDTO customer) throws Exception {
+    public String saveCustomer(@ModelAttribute("customer") Customer customer) throws Exception {
         // save employee to database
         customerService.save(customer);
         return "redirect:/";
@@ -42,14 +39,14 @@ public class CustomerController {
     public String edit(@PathVariable(value = "id") int id, Model model) {
 
         // get customer from the service
-        CustomerDTO customer = customerService.getCustomerById(id);
+        Customer customer = customerService.fetch(id);
 
         // set customer as a model attribute to pre-populate the form
         model.addAttribute("customer", customer);
         return "edit_customer";
     }
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable(value = "id") int id) {
+    public String delete(@PathVariable(value = "id") int id) throws Exception {
 
         // call delete customer method
         this.customerService.delete(id);
@@ -57,7 +54,7 @@ public class CustomerController {
     }
  /*   @GetMapping("/search")
     public ModelAndView search(@RequestParam String keyword) {
-        List<CustomerDTO> result = customerService.search(keyword);
+        List<Customer> result = customerService.search(keyword);
         ModelAndView mav = new ModelAndView("search");
         mav.addObject("result", result);
 

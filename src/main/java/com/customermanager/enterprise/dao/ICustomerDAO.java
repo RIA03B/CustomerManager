@@ -1,13 +1,13 @@
 package com.customermanager.enterprise.dao;
 
-import com.customermanager.enterprise.dto.CustomerDTO;
+import com.customermanager.enterprise.dto.Customer;
 
 import java.util.List;
 
 public interface ICustomerDAO {
-    CustomerDTO getCustomerById(int customerId);
+    Customer fetch(int customerId);
 
-    Iterable<CustomerDTO> getAll() throws Exception;
+    Iterable<Customer> fetchAll() throws Exception;
 
-    boolean save(CustomerDTO customerDTO) throws Exception;
+    Customer save(Customer customer) throws Exception;
 }

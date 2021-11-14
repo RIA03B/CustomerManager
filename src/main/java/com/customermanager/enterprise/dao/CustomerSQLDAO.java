@@ -3,12 +3,13 @@ package com.customermanager.enterprise.dao;
 import com.customermanager.enterprise.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-public class CustomerDAO implements ICustomerDAO{
+@Repository("customerDAO")
+public class CustomerSQLDAO implements ICustomerDAO {
     @Autowired
-    @Qualifier("customerRepository")
     CustomerRepository customerRepository;
 
     @Override

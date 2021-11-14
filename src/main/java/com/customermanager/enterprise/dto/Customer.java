@@ -12,9 +12,9 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name = "customer")
-public @Data class CustomerDTO {
+public @Data class Customer {
         @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
+        @GeneratedValue(strategy = GenerationType.AUTO)
         private int id;
 
         @Column(name = "first_name")

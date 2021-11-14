@@ -1,11 +1,11 @@
 package com.customermanager.enterprise.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.customermanager.enterprise.dao.CustomerDAO;
 import com.customermanager.enterprise.dao.CustomerRepository;
-import com.customermanager.enterprise.dto.CustomerDTO;
+import com.customermanager.enterprise.dao.ICustomerDAO;
+import com.customermanager.enterprise.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,33 +18,29 @@ import org.springframework.stereotype.Service;
 public class CustomerService implements ICustomerService {
 
     @Autowired
-    CustomerDAO customerDAO;
+    ICustomerDAO customerDAO;
 
     @Autowired
     private CustomerRepository customerRepository;
 
-
-    @Override
-    public Iterable<CustomerDTO> getAllCustomers() throws Exception {
-        return customerDAO.getAll();
+    public CustomerService(ICustomerDAO customerDAO)
+    {
+        this.customerDAO = customerDAO;
     }
 
     @Override
-    public boolean save(CustomerDTO customer) throws Exception {
-        customerDAO.save(customer);
-        return false;
+    public Iterable<Customer> fetchAll() throws Exception {
+        return customerDAO.fetchAll();
     }
 
     @Override
-    public CustomerDTO getCustomerById(int id) {
-        Optional <CustomerDTO> optional = customerRepository.findById(id);
-        CustomerDTO customer;
-        if (optional.isPresent()) {
-            customer = optional.get();
-        } else {
-            throw new RuntimeException(" CustomerDTO not found for id :: " + id);
-        }
-        return customer;
+    public Customer save(Customer customer) throws Exception {
+        return customerDAO.save(customer);
+    }
+
+    @Override
+    public Customer fetch(int id) {
+        return customerDAO.fetch(id);
     }
 
     @Override

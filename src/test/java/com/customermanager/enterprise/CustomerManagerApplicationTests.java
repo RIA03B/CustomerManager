@@ -1,7 +1,7 @@
 package com.customermanager.enterprise;
 
 import com.customermanager.enterprise.dao.CustomerRepository;
-import com.customermanager.enterprise.dto.CustomerDTO;
+import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.CustomerService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -18,7 +18,7 @@ class CustomerManagerApplicationTests {
 
     @MockBean
     private CustomerService customerService;
-    private CustomerDTO customer= new CustomerDTO();
+    private Customer customer= new Customer();
     @MockBean
     private CustomerRepository customerRepository;
 
@@ -35,7 +35,7 @@ class CustomerManagerApplicationTests {
     private void givenNewCustomerTabIsAvailable() {
     }
 
-    // Populates the CustomerDTO model
+    // Populates the Customer model
     private void whenSelectingCreateNewCustomer() {
         customer.setId(3);
         customer.setFirstName("James");
@@ -48,12 +48,12 @@ class CustomerManagerApplicationTests {
     // Creates a customer and saves it to the repository,
     // then checks if the saved customer returns correctly from the repository
     private void thenAddNewCustomerInformation() {
-       CustomerDTO createCustomer = customerRepository.save(customer);
+       Customer createCustomer = customerRepository.save(customer);
        assertEquals(customer, createCustomer);
        verify(customerRepository, atLeastOnce()).save(customer);
     }
 
-    // Given CustomerDTO -> Populate CustomerDTO model -> Verify customer saves correctly
+    // Given Customer -> Populate Customer model -> Verify customer saves correctly
     @Test
     void saveCustomerUpdate_displayCustomerUpdate(){
         givenCustomerUpdate();
@@ -90,7 +90,7 @@ class CustomerManagerApplicationTests {
     }
 
     private void whenCustomer3AddedIsJason() {
-        CustomerDTO customerJ = new CustomerDTO();
+        Customer customerJ = new Customer();
         customerJ.setId(3);
         customerJ.setFirstName("Jason");
    /*     Mockito.when(customerRepository.findById(3)).thenReturn(customerJ);*/
@@ -101,7 +101,7 @@ class CustomerManagerApplicationTests {
     }
 
     private void whenSearchCustomerWithID3() {
-        customer = customerService.getCustomerById(3);
+        customer = customerService.fetch(3);
     }
 
     private void thenReturnCustomerID3() {
