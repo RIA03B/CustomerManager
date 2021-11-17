@@ -32,12 +32,14 @@
             <td th:text="${customer.lastName}"></td>
             <td th:text="${customer.email}"></td>
             <td th:text="${customer.address}"></td>
-            <td> <a th:href="@{/edit/{id}(id=${customer.id})}" class="btn btn-primary">Edit</a>
+            <td> <a th:href="@{/edit/{id}(id=${customer.id})}" class="btn btn-primary">Edit</a> |
                 <a th:href="@{/delete/{id}(id=${customer.id})}" class="btn btn-danger">Delete</a>
             </td>
         </tr>
         </tbody>
     </table>
+</div>
+<div th:replace="fragments/footer :: footer">
 </div>
 </body>
 
