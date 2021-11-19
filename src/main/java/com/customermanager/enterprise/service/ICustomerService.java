@@ -1,8 +1,6 @@
 package com.customermanager.enterprise.service;
 
 import com.customermanager.enterprise.dto.Customer;
-import org.springframework.http.HttpStatus;
-
 import java.util.List;
 
 
@@ -22,5 +20,5 @@ public interface ICustomerService {
 
     void delete(int id) throws Exception;
 
-
+    List<Customer> getAllCustomers();
 }

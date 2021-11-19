@@ -1,16 +1,12 @@
 package com.customermanager.enterprise.service;
 
-import java.util.Optional;
-
-import com.customermanager.enterprise.dao.CustomerDAO;
+import java.util.List;
 import com.customermanager.enterprise.dao.CustomerRepository;
 
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.Cacheable;
 import com.customermanager.enterprise.dao.ICustomerDAO;
 import com.customermanager.enterprise.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.stereotype.Service;
 
 /**
@@ -54,6 +50,11 @@ public class CustomerService implements ICustomerService {
     @CacheEvict(value = "delete", key = "#id")
     public void delete(int id) {
         this.customerRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Customer> getAllCustomers() {
+        return customerDAO.getAllCustomers();
     }
 
 }

@@ -2,13 +2,17 @@ package com.customermanager.enterprise.dao;
 
 import com.customermanager.enterprise.dto.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository("customerDAO")
 public class CustomerSQLDAO implements ICustomerDAO {
+    Map<Integer, Customer> allCustomers = new HashMap<>();
+
     @Autowired
     CustomerRepository customerRepository;
 
@@ -27,4 +31,10 @@ public class CustomerSQLDAO implements ICustomerDAO {
         Customer save = customerRepository.save(customer);
         return save;
     }
+    @Override
+    public List<Customer> getAllCustomers() {
+        List<Customer> allCustomerList = new ArrayList<>(allCustomers.values());
+        return  allCustomerList;
+    }
+
 }

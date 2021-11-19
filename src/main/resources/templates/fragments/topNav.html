@@ -12,10 +12,11 @@
                 <li class="nav-item">
                     <a class="nav-link" href="/edit">Edit</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/search">Search</a>
-                </li>
             </ul>
+            <form class="form-inline" action="#" th:action="@{/Customer}" method="get">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" id="keyword">
+                <button class="btn btn-success" type="submit" vaue="0">Search</button>
+            </form>
         </div>
     </nav>
 </div>
