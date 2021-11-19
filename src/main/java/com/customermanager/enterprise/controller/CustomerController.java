@@ -2,10 +2,16 @@ package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import org.springframework.http.HttpHeaders;
+import java.util.List;
 
 /**
  * This class handles all requests from the clients. The customer manager
@@ -16,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Controller
 public class CustomerController {
+
     @Autowired
     ICustomerService customerService;
 
@@ -83,19 +90,29 @@ public class CustomerController {
         this.customerService.delete(id);
         return "redirect:/";
     }
- /*   @GetMapping("/search")
+
 
     /**
      * Search for a customer
      *
      * @return customer that was searched for.
      */
-    /*@GetMapping("/search")
-    public ModelAndView search(@RequestParam String keyword) {
-        List<Customer> result = customerService.search(keyword);
-        ModelAndView mav = new ModelAndView("search");
-        mav.addObject("result", result);
+    @GetMapping("/search")
+    public ResponseEntity search(@RequestParam(value="keyword",required = false,defaultValue = "None") String keyword){
+        String newSearch = keyword + "";
+        return new ResponseEntity(HttpStatus.OK);
+    }
+    @GetMapping("/Customer")
+    public ResponseEntity fetchAllCustomers(){
+        try {
+            List<Customer> allCustomers = customerService.getAllCustomers();
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+            return new ResponseEntity(allCustomers, headers, HttpStatus.OK);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
 
-        return mav;
-    }*/
+    }
 }
