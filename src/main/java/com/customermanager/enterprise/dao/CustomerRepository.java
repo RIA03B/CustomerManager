@@ -3,7 +3,6 @@ package com.customermanager.enterprise.dao;
 import com.customermanager.enterprise.dto.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-
 /**
  * We created a CustomerRepository interface, which is code we need for the data
  * access layer. We declared an interface that extends the CrudRepository
