@@ -91,17 +91,6 @@ public class CustomerController {
         return "redirect:/";
     }
 
-
-    /**
-     * Search for a customer
-     *
-     * @return customer that was searched for.
-     */
-    @GetMapping("/search")
-    public ResponseEntity search(@RequestParam(value="keyword",required = false,defaultValue = "None") String keyword){
-        String newSearch = keyword + "";
-        return new ResponseEntity(HttpStatus.OK);
-    }
     @GetMapping("/Customer")
     public ResponseEntity fetchAllCustomers(){
         try {
