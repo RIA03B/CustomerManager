@@ -51,6 +51,16 @@ public class CustomerController {
     }
 
     /**
+     * Import customer objects
+     *
+     * @return imported customers
+     */
+    @GetMapping("/import")
+    public String runImport() throws Exception {
+        return "import";
+    }
+
+    /**
      * Save customer to database
      *
      * @return Save customer then redirect them to the main page
