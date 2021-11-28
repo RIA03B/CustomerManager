@@ -10,5 +10,4 @@ public interface ICustomerDAO {
     Iterable<Customer> fetchAll() throws Exception;
 
     Customer save(Customer customer) throws Exception;
-    List<Customer> getAllCustomers();
 }

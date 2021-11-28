@@ -19,6 +19,4 @@ public interface ICustomerService {
     Customer fetch(int id);
 
     void delete(int id) throws Exception;
-
-    List<Customer> getAllCustomers();
 }

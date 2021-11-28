@@ -2,6 +2,7 @@ package com.customermanager.enterprise.controller;
 
 import com.customermanager.enterprise.dto.Customer;
 import com.customermanager.enterprise.service.ICustomerService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -56,9 +57,65 @@ public class CustomerController {
      * @return Save customer then redirect them to the main page
      */
     @PostMapping("/save")
-    public String saveCustomer(@ModelAttribute("customer") Customer customer) throws Exception {
+    public String save(@ModelAttribute("customer") Customer customer) throws Exception {
         customerService.save(customer);
         return "redirect:/";
+    }
+
+    /**
+     * Create a customer, given provided data
+     *
+     * @param customer JSON Object
+     * @return New customer object
+     */
+    @PostMapping("/createCustomer")
+    public ResponseEntity createCustomer(@RequestBody Customer customer) throws Exception {
+        Customer newCustomer = null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        try {
+            newCustomer = customerService.save(customer);
+        } catch (Exception e) {
+            return new ResponseEntity(headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity(newCustomer, headers, HttpStatus.OK);
+    }
+
+    /**
+     * Create a customer, given provided data
+     *
+     * @param customer JSON Object
+     * @return New customer object
+     */
+    @PostMapping("/saveCustomer/{id}")
+    public ResponseEntity saveCustomer(@PathVariable("id") int id, @RequestBody Customer customer) throws Exception {
+        Customer newCustomer = null;
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        try {
+            customer.setId(id);
+            newCustomer = customerService.save(customer);
+        } catch (Exception e) {
+            return new ResponseEntity(headers, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+
+        return new ResponseEntity(newCustomer, headers, HttpStatus.OK);
+    }
+
+    /**
+     * Delete a customer, given provided id
+     *
+     * @param id id
+     */
+    @DeleteMapping("/deleteCustomer/{id}")
+    public ResponseEntity deleteCustomer(@PathVariable("id") int id) throws Exception {
+        try {
+            customerService.delete(id);
+            return new ResponseEntity(HttpStatus.OK);
+        } catch (Exception e) {
+            return new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     /**
@@ -91,17 +148,9 @@ public class CustomerController {
         return "redirect:/";
     }
 
-    @GetMapping("/Customer")
-    public ResponseEntity fetchAllCustomers(){
-        try {
-            List<Customer> allCustomers = customerService.getAllCustomers();
-            HttpHeaders headers = new HttpHeaders();
-            headers.setContentType(MediaType.APPLICATION_JSON);
-            return new ResponseEntity(allCustomers, headers, HttpStatus.OK);
-        } catch (Exception e) {
-            e.printStackTrace();
-            return  new ResponseEntity(HttpStatus.INTERNAL_SERVER_ERROR);
-        }
-
+    @GetMapping("/customers")
+    @ResponseBody
+    public Iterable<Customer> fetchAllCustomers() throws Exception {
+        return customerService.fetchAll();
     }
 }

@@ -31,10 +31,4 @@ public class CustomerDAO implements ICustomerDAO{
         Customer save = customerRepository.save(customer);
         return save;
     }
-
-    @Override
-    public List<Customer> getAllCustomers() {
-        List<Customer> allCustomerList = new ArrayList<>(allCustomers.values());
-        return  allCustomerList;
-    }
 }

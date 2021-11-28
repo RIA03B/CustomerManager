@@ -51,10 +51,4 @@ public class CustomerService implements ICustomerService {
     public void delete(int id) {
         this.customerRepository.deleteById(id);
     }
-
-    @Override
-    public List<Customer> getAllCustomers() {
-        return customerDAO.getAllCustomers();
-    }
-
 }
