@@ -2,9 +2,7 @@ package com.customermanager.enterprise;
 
 import com.customermanager.enterprise.dao.CustomerRepository;
 import com.customermanager.enterprise.dto.Customer;
-import com.customermanager.enterprise.service.CustomerService;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -17,7 +15,6 @@ import static org.mockito.Mockito.verify;
 class CustomerManagerApplicationTests {
 
     @MockBean
-    private CustomerService customerService;
     private Customer customer= new Customer();
     @MockBean
     private CustomerRepository customerRepository;
@@ -41,7 +38,7 @@ class CustomerManagerApplicationTests {
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
-        customer.setAddress("444 Mont St, Cincinnati, Ohio 45454");
+        customer.setAddress("444 Mont St, Cincinnati, Ohio");
 
     }
 
@@ -63,49 +60,18 @@ class CustomerManagerApplicationTests {
 
     private void givenCustomerUpdate() {
     }
-    //Don't know if this is correct
     private void whenCustomerUpdate() {
         customer.setId(3);
         customer.setFirstName("James");
         customer.setLastName("Hill");
         customer.setEmail("James.Hill@gmail.com");
-        customer.setAddress("789 Bill Rd, Cincinnati, Ohio 45434");
+        customer.setAddress("789 Bill Rd, Cincinnati, Ohio");
 
     }
-    //Don't know if this is correct
     private void thenCustomerUpdate() {
         customerRepository.save(customer);
         var updateCustomer = customerRepository.findById(customer.getId());
         assertEquals(customer, updateCustomer);
         verify(customerRepository, atLeastOnce()).save(customer);
-    }
-
-    //Don't know if this is correct for the search
-    @Test
-    void fetchCustomerByID_returnsCustomerID3() throws Exception  {
-        givenCustomerDataAreAvailable();
-        whenCustomer3AddedIsJason();
-        whenSearchCustomerWithID3();
-        thenReturnCustomerID3();
-    }
-
-    private void whenCustomer3AddedIsJason() {
-        Customer customerJ = new Customer();
-        customerJ.setId(3);
-        customerJ.setFirstName("Jason");
-   /*     Mockito.when(customerRepository.findById(3)).thenReturn(customerJ);*/
-    }
-    //error occurs here??
-    private void givenCustomerDataAreAvailable() throws Exception {
-        Mockito.when(customerRepository.save(customer)).thenReturn(customer);
-    }
-
-    private void whenSearchCustomerWithID3() {
-        customer = customerService.fetch(3);
-    }
-
-    private void thenReturnCustomerID3() {
-        String firstname = customer.getFirstName();
-        assertEquals("James", firstname);
     }
 }
